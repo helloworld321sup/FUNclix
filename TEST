@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blicket Market</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .sidebar {
+      width: 180px;
+      background-color: #8e44ad;
+      color: white;
+      position: fixed;
+      height: 100%;
+      padding-top: 20px;
+    }
+
+    .sidebar h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: none;
+      border: none;
+      color: white;
+      text-align: left;
+      padding-left: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover,
+    .sidebar .active {
+      background-color: #732d91;
+    }
+
+    .main {
+      margin-left: 180px;
+      padding: 25px;
+    }
+
+    .market-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    .pack {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 12px;
+      transition: transform 0.2s;
+    }
+
+    .pack:hover {
+      transform: scale(1.05);
+    }
+
+    .pack img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .pack-name {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h1>Blicket</h1>
+    <button class="active">Market</button>
+    <button>Blooks</button>
+    <button>Trading</button>
+  </div>
+
+  <div class="main">
+    <div class="market-title">Market</div>
+    <div class="pack-grid">
+      <div class="pack">
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fblooket.fandom.com%2Fwiki%2FBreakfast_Pack&psig=AOvVaw1sbRl1r9NmbCUdDK54m2R7&ust=1747602463077000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiCp9W0q40DFQAAAAAdAAAAABAE" alt="Breakfast Pack">
+        <div class="pack-name">Breakfast Pack</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
