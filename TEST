@@ -82,15 +82,45 @@
       <div class="pack-title">😊 Emojis Pack</div>
     </div>
     <div class="pack-container" onclick="startPackAnimation('exotics')" id="exotics-pack">
-      <div class="pack-title">🌍 Exotics Pack</div>
+      <div class="pack-title">📀 Exotics Pack</div>
     </div>
     <div class="pack-container" onclick="startPackAnimation('sports')" id="sports-pack">
       <div class="pack-title">⚽ Sports Pack</div>
     </div>
     <div class="pack-container" onclick="startPackAnimation('food')" id="food-pack">
-      <div class="pack-title">🍎 Food Pack</div>
+      <div class="pack-title">🍔 Food Pack</div>
     </div>
-
+    <div class="pack-container" onclick="startPackAnimation('videogame')" id="videogame-pack">
+      <div class="pack-title">🕹️ Video Game Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('school')" id="school-pack">
+      <div class="pack-title">📄 School Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('monuments')" id="monuments-pack">
+      <div class="pack-title">🌉 Monuments Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('animals')" id="animals-pack">
+      <div class="pack-title">🦁 Animals Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('car')" id="car-pack">
+      <div class="pack-title">🚘 Car Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('french')" id="french-pack">
+      <div class="pack-title">🇨🇵 French Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('drink')" id="drink-pack">
+      <div class="pack-title">🧃 Drink Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('tools')" id="tools-pack">
+      <div class="pack-title">🛠️ Tools Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('arctic')" id="arctic-pack">
+      <div class="pack-title">❄️ Arctic Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('color')" id="color-pack">
+      <div class="pack-title">🎨 Color Pack</div>
+    </div>
+    
     <div id="item"></div>
     <div id="rarity"></div>
 
@@ -136,11 +166,10 @@
         { name: "🚛", rarity: "Uncommon", chance: 16.25 },
         { name: "🚀", rarity: "Rare", chance: 12.5 },
         { name: "🛳️", rarity: "Rare", chance: 12.5 },
-        { name: "🗽", rarity: "Epic", chance: 8 },
+        { name: "🧌", rarity: "Epic", chance: 8 },
         { name: "🌋", rarity: "Legendary", chance: 1.79 },
         { name: "📀", rarity: "Exotic", chance: 0.006 },
-        { name: "💿", rarity: "Exotic", chance: 0.004 },
-        { name: "🏄", rarity: "Elusive", chance: 0.000037, color: "salmon" }
+        { name: "💿", rarity: "Exotic", chance: 0.004 }
       ],
       sports: [
         { name: "⚽", rarity: "Uncommon", chance: 18 },
@@ -170,6 +199,157 @@
         { name: "👨‍🍳", rarity: "Legendary", chance: 1.4 },
         { name: "🍰", rarity: "Chroma", chance: 0.19996 },
         { name: "🥩", rarity: "Elusive", chance: 0.00004, color: "metallicred" }
+      ],
+       videogame: [
+        { name: "🎮", rarity: "Uncommon", chance: 18 },
+        { name: "🕹️", rarity: "Uncommon", chance: 18 },
+        { name: "💾", rarity: "Uncommon", chance: 18 },
+        { name: "🪫", rarity: "Uncommon", chance: 18 },
+        { name: "⚔️", rarity: "Rare", chance: 6.25 },
+        { name: "👾", rarity: "Rare", chance: 6.25 },
+        { name: "🧠", rarity: "Rare", chance: 6.25 },
+        { name: "🧙‍♂️", rarity: "Epic", chance: 3.125 },
+        { name: "🍄", rarity: "Epic", chance: 3.125 },
+        { name: "🐉", rarity: "Legendary", chance: 1.4 },
+        { name: "💽", rarity: "Legendary", chance: 1.4 },
+        { name: "💎", rarity: "Chroma", chance: 0.19996 },
+        { name: "🔫", rarity: "Elusive", chance: 0.00004, color: "metallicred" }
+      ],
+       school: [
+        { name: "🖍️", rarity: "Uncommon", chance: 18 },
+        { name: "🧮", rarity: "Uncommon", chance: 18 },
+        { name: "📓", rarity: "Uncommon", chance: 18 },
+        { name: "✏️", rarity: "Uncommon", chance: 18 },
+        { name: "🖨️", rarity: "Rare", chance: 6.25 },
+        { name: "🛎️", rarity: "Rare", chance: 6.25 },
+        { name: "📚", rarity: "Rare", chance: 6.25 },
+        { name: "🎒", rarity: "Epic", chance: 3.125 },
+        { name: "🧪", rarity: "Epic", chance: 3.125 },
+        { name: "📝", rarity: "Legendary", chance: 1.4 },
+        { name: "🧑‍🏫", rarity: "Legendary", chance: 1.4 },
+        { name: "🏫", rarity: "Chroma", chance: 0.2 }
+      ],
+      monuments: [
+        { name: "🗽", rarity: "Uncommon", chance: 18 },
+        { name: "🗿", rarity: "Uncommon", chance: 18 },
+        { name: "🕌", rarity: "Uncommon", chance: 18 },
+        { name: "🏰", rarity: "Uncommon", chance: 18 },
+        { name: "🕍", rarity: "Rare", chance: 6.25 }, 
+        { name: "🛕", rarity: "Rare", chance: 6.25 },
+        { name: "⛩️", rarity: "Rare", chance: 6.25 },
+        { name: "🏯", rarity: "Epic", chance: 3.125 },
+        { name: "🕌", rarity: "Epic", chance: 3.125 },
+        { name: "🗼", rarity: "Legendary", chance: 1.4 },
+        { name: "🕋", rarity: "Legendary", chance: 1.4 },
+        { name: "🌉", rarity: "Chroma", chance: 0.19996 },
+        { name: "🏛️", rarity: "Elusive", chance: 0.00004, color: "gold" }
+      ],
+       animals: [
+        { name: "🫎", rarity: "Uncommon", chance: 18 },
+        { name: "🐻", rarity: "Uncommon", chance: 18 },
+        { name: "🐰", rarity: "Uncommon", chance: 18 },
+        { name: "🐴", rarity: "Uncommon", chance: 18 },
+        { name: "😽", rarity: "Rare", chance: 6.25 }, 
+        { name: "🐷", rarity: "Rare", chance: 6.25 },
+        { name: "🐻‍❄", rarity: "Rare", chance: 6.25 },
+        { name: "🦬", rarity: "Epic", chance: 3.125 },
+        { name: "🦧", rarity: "Epic", chance: 3.125 },
+        { name: "🦈", rarity: "Legendary", chance: 1.4 },
+        { name: "🦍", rarity: "Legendary", chance: 1.4 },
+        { name: "🦁", rarity: "Chroma", chance: 0.2 }
+      ],
+       car: [
+        { name: "🚘", rarity: "Uncommon", chance: 18 },
+        { name: "🚚", rarity: "Uncommon", chance: 18 },
+        { name: "🚐", rarity: "Uncommon", chance: 18 },
+        { name: "🚍", rarity: "Uncommon", chance: 18 },
+        { name: "🚓", rarity: "Rare", chance: 6.25 }, 
+        { name: "🚜", rarity: "Rare", chance: 6.25 },
+        { name: "🚒", rarity: "Rare", chance: 6.25 },
+        { name: "🛵", rarity: "Epic", chance: 3.125 },
+        { name: "🛴", rarity: "Epic", chance: 3.125 },
+        { name: "🏍", rarity: "Legendary", chance: 1.4 },
+        { name: "🏎", rarity: "Legendary", chance: 1.4 },
+        { name: "🚅", rarity: "Chroma", chance: 0.09505 },
+        { name: "🚄", rarity: "Chroma", chance: 0.09505 },
+        { name: "🛸", rarity: "Exotic", chance: 0.009 }
+      ],
+        french: [
+        { name: "🥖", rarity: "Uncommon", chance: 18 },
+        { name: "🇨🇵", rarity: "Uncommon", chance: 18 },
+        { name: "🪻", rarity: "Uncommon", chance: 18 },
+        { name: "🥐", rarity: "Uncommon", chance: 18 },
+        { name: "🍳", rarity: "Rare", chance: 6.25 }, 
+        { name: "🏇", rarity: "Rare", chance: 6.25 },
+        { name: "🎆", rarity: "Rare", chance: 6.25 },
+        { name: "🛡", rarity: "Epic", chance: 3.125 },
+        { name: "🧾", rarity: "Epic", chance: 3.125 },
+        { name: "📸", rarity: "Legendary", chance: 1.4 },
+        { name: "🎺", rarity: "Legendary", chance: 1.4 },
+        { name: "🎈", rarity: "Chroma", chance: 0.09505 },
+        { name: "🪂", rarity: "Chroma", chance: 0.09505 },
+        { name: "🍟", rarity: "Exotic", chance: 0.009 }
+      ],
+      drink: [
+        { name: "🧃", rarity: "Uncommon", chance: 18 },
+        { name: "🥤", rarity: "Uncommon", chance: 18 },
+        { name: "🥛", rarity: "Uncommon", chance: 18 },
+        { name: "🍼", rarity: "Uncommon", chance: 18 },
+        { name: "🍶", rarity: "Rare", chance: 6.25 }, 
+        { name: "🍹", rarity: "Rare", chance: 6.25 },
+        { name: "🥃", rarity: "Rare", chance: 6.25 },
+        { name: "🍷", rarity: "Epic", chance: 3.125 },
+        { name: "🍾", rarity: "Epic", chance: 3.125 },
+        { name: "🍺", rarity: "Legendary", chance: 1.4 },
+        { name: "🧋", rarity: "Legendary", chance: 1.4 },
+        { name: "🍧", rarity: "Chroma", chance: 0.09505 },
+        { name: "🥂", rarity: "Chroma", chance: 0.09505 },
+        { name: "🧉", rarity: "Exotic", chance: 0.009 }
+      ],
+      tools: [
+        { name: "🪜", rarity: "Uncommon", chance: 18 },
+        { name: "🔩", rarity: "Uncommon", chance: 18 },
+        { name: "🔨", rarity: "Uncommon", chance: 18 },
+        { name: "🪛", rarity: "Uncommon", chance: 18 },
+        { name: "⚙️", rarity: "Rare", chance: 6.25 }, 
+        { name: "🧲", rarity: "Rare", chance: 6.25 },
+        { name: "🪚", rarity: "Rare", chance: 6.25 },
+        { name: "🔧", rarity: "Epic", chance: 3.125 },
+        { name: "🧰", rarity: "Epic", chance: 3.125 },
+        { name: "⛏️", rarity: "Legendary", chance: 1.4 },
+        { name: "🪏", rarity: "Legendary", chance: 1.4 },
+        { name: "🧨", rarity: "Chroma", chance: 0.09505 },
+        { name: "💣", rarity: "Chroma", chance: 0.09505 },
+        { name: "🪓", rarity: "Exotic", chance: 0.009 }
+      ],
+      arctic: [
+        { name: "🐧", rarity: "Uncommon", chance: 18 },
+        { name: "🐻", rarity: "Uncommon", chance: 18 },
+        { name: "❄️", rarity: "Uncommon", chance: 18 },
+        { name: "🌨️", rarity: "Uncommon", chance: 18 },
+        { name: "🐺", rarity: "Rare", chance: 6.25 },
+        { name: "🦭", rarity: "Rare", chance: 6.25 },
+        { name: "🐟", rarity: "Rare", chance: 6.25 },
+        { name: "🧊", rarity: "Epic", chance: 2.42 },
+        { name: "🛷", rarity: "Epic", chance: 2.42 },
+        { name: "🧥", rarity: "Epic", chance: 2.41 },
+        { name: "🐋", rarity: "Legendary", chance: 1.7999 },
+        { name: "🌌", rarity: "Chroma", chance: 0.2 },
+        { name: "🏔️", rarity: "Elusive", chance: 0.0001, color: "ice-blue" }
+      ],
+      color: [
+        { name: "🔴", rarity: "Uncommon", chance: 18 },
+        { name: "🟠", rarity: "Uncommon", chance: 18 },
+        { name: "🟡", rarity: "Uncommon", chance: 18 },
+        { name: "🟢", rarity: "Uncommon", chance: 18 },
+        { name: "🔵", rarity: "Rare", chance: 6.25 },
+        { name: "🟣", rarity: "Rare", chance: 6.25 },
+        { name: "⚫️", rarity: "Rare", chance: 6.25 },
+        { name: "⚪", rarity: "Epic", chance: 3.125 },
+        { name: "🔘", rarity: "Epic", chance: 3.125 },
+        { name: "⚜️", rarity: "Legendary", chance: 1.7999 },
+        { name: "🌈", rarity: "Chroma", chance: 0.2 },
+        { name: "🎨", rarity: "Elusive", chance: 0.0001, color: "rainbow-paint" }
       ]
     };
     
