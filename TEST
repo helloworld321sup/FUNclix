@@ -2,104 +2,289 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blicket Market</title>
+  <title>Blooket-Style Pack Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Your existing styles remain unchanged */
     body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      text-align: center;
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f0f0;
+      padding: 20px;
     }
-
-    .sidebar {
-      width: 180px;
-      background-color: #8e44ad;
-      color: white;
+    #loginScreen { display: block; }
+    #gameScreen { display: none; }
+    input[type="text"] {
+      padding: 15px; font-size: 18px; width: 250px; margin-bottom: 10px;
+    }
+    button {
+      padding: 12px 25px; font-size: 18px; cursor: pointer;
+    }
+    .pack-container {
+      display: inline-block; background: #ccc; border: 4px solid #999;
+      border-radius: 16px; padding: 30px 50px; margin: 20px;
+      cursor: pointer; transition: transform 0.2s;
+    }
+    .pack-title {
+      font-size: 24px; font-weight: bold;
+    }
+    .pulse {
+      animation: pulse-click 0.5s ease-in-out 2;
+    }
+    @keyframes pulse-click {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(0.95); }
+      75% { transform: scale(1.05); }
+    }
+    #item {
+      font-size: 60px; margin-top: 30px;
+    }
+    #rarity {
+      font-size: 24px; margin-top: 10px;
+    }
+    .locker {
+      margin-top: 40px; background: #e0e0e0; padding: 20px;
+      border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .locker-title {
+      font-size: 22px; font-weight: bold; margin-bottom: 10px;
+    }
+    .locker-item {
+      font-size: 18px; margin: 5px;
+    }
+    canvas {
       position: fixed;
-      height: 100%;
-      padding-top: 20px;
-    }
-
-    .sidebar h1 {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-
-    .sidebar button {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background: none;
-      border: none;
-      color: white;
-      text-align: left;
-      padding-left: 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .sidebar button:hover,
-    .sidebar .active {
-      background-color: #732d91;
-    }
-
-    .main {
-      margin-left: 180px;
-      padding: 25px;
-    }
-
-    .market-title {
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .pack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 20px;
-    }
-
-    .pack {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 12px;
-      transition: transform 0.2s;
-    }
-
-    .pack:hover {
-      transform: scale(1.05);
-    }
-
-    .pack img {
-      width: 100px;
-      height: 100px;
-    }
-
-    .pack-name {
-      font-weight: bold;
-      margin-top: 10px;
+      pointer-events: none;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h1>Blicket</h1>
-    <button class="active">Market</button>
-    <button>Blooks</button>
-    <button>Trading</button>
+
+  <div id="loginScreen">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter your username">
+    <br>
+    <button onclick="login()">Start</button>
   </div>
 
-  <div class="main">
-    <div class="market-title">Market</div>
-    <div class="pack-grid">
-      <div class="pack">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fblooket.fandom.com%2Fwiki%2FBreakfast_Pack&psig=AOvVaw1sbRl1r9NmbCUdDK54m2R7&ust=1747602463077000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiCp9W0q40DFQAAAAAdAAAAABAE" alt="Breakfast Pack">
-        <div class="pack-name">Breakfast Pack</div>
-      </div>
+  <div id="gameScreen">
+    <h2>Hello, <span id="userNameDisplay"></span>!</h2>
+
+    <div class="pack-container" onclick="startPackAnimation('business')" id="business-pack">
+      <div class="pack-title">📦 Business Pack</div>
     </div>
+    <div class="pack-container" onclick="startPackAnimation('emojis')" id="emojis-pack">
+      <div class="pack-title">😊 Emojis Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('exotics')" id="exotics-pack">
+      <div class="pack-title">🌍 Exotics Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('sports')" id="sports-pack">
+      <div class="pack-title">⚽ Sports Pack</div>
+    </div>
+    <div class="pack-container" onclick="startPackAnimation('food')" id="food-pack">
+      <div class="pack-title">🍎 Food Pack</div>
+    </div>
+
+    <div id="item"></div>
+    <div id="rarity"></div>
+
+    <div class="locker">
+      <div class="locker-title">Your Locker</div>
+      <div id="locker-content"></div>
+    </div>
+
+    <button onclick="logout()">Logout</button>
   </div>
+
+  <canvas id="confetti-canvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    const packs = {
+      business: [
+        { name: "🏷️", rarity: "Uncommon", chance: 18.75 },
+        { name: "📅", rarity: "Uncommon", chance: 18.75 },
+        { name: "📊", rarity: "Uncommon", chance: 18.75 },
+        { name: "💼", rarity: "Uncommon", chance: 18.75 },
+        { name: "💳", rarity: "Rare", chance: 8.5 },
+        { name: "🗑️", rarity: "Rare", chance: 8.5 },
+        { name: "💻", rarity: "Epic", chance: 6 },
+        { name: "👨🏻‍💼", rarity: "Legendary", chance: 0.95 },
+        { name: "🛒", rarity: "Chroma", chance: 0.05 }
+      ],
+      emojis: [
+        { name: "😩", rarity: "Uncommon", chance: 18.75 },
+        { name: "😕", rarity: "Uncommon", chance: 18.75 },
+        { name: "🤨", rarity: "Uncommon", chance: 18.75 },
+        { name: "😗", rarity: "Uncommon", chance: 18.75 },
+        { name: "🤓", rarity: "Rare", chance: 8.5 },
+        { name: "😍", rarity: "Rare", chance: 8.5 },
+        { name: "😎", rarity: "Epic", chance: 6 },
+        { name: "🤯", rarity: "Legendary", chance: 0.9 },
+        { name: "🤬", rarity: "Chroma", chance: 0.1 }
+      ],
+      exotics: [
+        { name: "🩵", rarity: "Uncommon", chance: 16.25 },
+        { name: "🤹‍♀️", rarity: "Uncommon", chance: 16.25 },
+        { name: "🎬", rarity: "Uncommon", chance: 16.25 },
+        { name: "🚛", rarity: "Uncommon", chance: 16.25 },
+        { name: "🚀", rarity: "Rare", chance: 12.5 },
+        { name: "🛳️", rarity: "Rare", chance: 12.5 },
+        { name: "🗽", rarity: "Epic", chance: 8 },
+        { name: "🌋", rarity: "Legendary", chance: 1.79 },
+        { name: "📀", rarity: "Exotic", chance: 0.006 },
+        { name: "💿", rarity: "Exotic", chance: 0.004 },
+        { name: "🏄", rarity: "Elusive", chance: 0.000037, color: "salmon" }
+      ],
+      sports: [
+        { name: "⚽", rarity: "Uncommon", chance: 18 },
+        { name: "🏀", rarity: "Uncommon", chance: 18 },
+        { name: "🏈", rarity: "Uncommon", chance: 18 },
+        { name: "⚾", rarity: "Uncommon", chance: 18 },
+        { name: "🥊", rarity: "Rare", chance: 6.25 },
+        { name: "🎾", rarity: "Rare", chance: 6.25 },
+        { name: "🏒", rarity: "Rare", chance: 6.25 },
+        { name: "🏆", rarity: "Epic", chance: 3.125 },
+        { name: "🧢", rarity: "Epic", chance: 3.125 },
+        { name: "🥇", rarity: "Legendary", chance: 1.799963 },
+        { name: "🥏", rarity: "Chroma", chance: 0.2 },
+        { name: "🏄", rarity: "Elusive", chance: 0.000037, color: "salmon" }
+     ],
+       food: [
+        { name: "🍎", rarity: "Uncommon", chance: 18 },
+        { name: "🍕", rarity: "Uncommon", chance: 18 },
+        { name: "🍩", rarity: "Uncommon", chance: 18 },
+        { name: "🍪", rarity: "Uncommon", chance: 18 },
+        { name: "🍣", rarity: "Rare", chance: 6.25 },
+        { name: "🍔", rarity: "Rare", chance: 6.25 },
+        { name: "🌮", rarity: "Rare", chance: 6.25 },
+        { name: "🥗", rarity: "Epic", chance: 3.125 },
+        { name: "🍜", rarity: "Epic", chance: 3.125 },
+        { name: "🍑", rarity: "Legendary", chance: 1.4 },
+        { name: "👨‍🍳", rarity: "Legendary", chance: 1.4 },
+        { name: "🍰", rarity: "Chroma", chance: 0.19996 },
+        { name: "🥩", rarity: "Elusive", chance: 0.00004, color: "metallicred" }
+      ]
+    };
+    
+    const rarityColors = {
+      Uncommon: '#2ecc71',
+      Rare: '#3498db',
+      Epic: '#e74c3c',
+      Legendary: '#f1c40f',
+      Chroma: '#00bfff',
+      Exotic: '#8000ff',
+      Elusive: 'salmon'
+    };
+
+    let locker = {};
+    let currentUser = "";
+    let isOpening = false;
+
+    if (localStorage.getItem("username")) {
+      login(localStorage.getItem("username"));
+    }
+
+    function login(existingUser = null) {
+      const usernameInput = document.getElementById("username");
+      const username = existingUser || usernameInput.value.trim();
+      if (!username) return alert("Please enter a username!");
+
+      currentUser = username;
+      localStorage.setItem("username", username);
+
+      const storedLocker = localStorage.getItem("locker_" + username);
+      locker = storedLocker ? JSON.parse(storedLocker) : {};
+
+      for (let pack in packs) {
+        packs[pack].forEach(b => {
+          if (!(b.name in locker)) locker[b.name] = 0;
+        });
+      }
+
+      document.getElementById("userNameDisplay").textContent = username;
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("gameScreen").style.display = "block";
+      updateLocker();
+    }
+
+    function logout() {
+      document.getElementById("loginScreen").style.display = "block";
+      document.getElementById("gameScreen").style.display = "none";
+    }
+
+    function saveLocker() {
+      if (currentUser) {
+        localStorage.setItem("locker_" + currentUser, JSON.stringify(locker));
+      }
+    }
+
+    function getColor(rarity) {
+      return rarityColors[rarity] || '#ffffff';
+    }
+
+    function updateLocker() {
+      const lockerContent = document.getElementById("locker-content");
+      lockerContent.innerHTML = '';
+      for (let emoji in locker) {
+        const div = document.createElement("div");
+        div.className = "locker-item";
+        div.textContent = `${emoji} - ${locker[emoji]}`;
+        lockerContent.appendChild(div);
+      }
+      saveLocker();
+    }
+
+    function startPackAnimation(packName) {
+      if (isOpening) return;
+      isOpening = true;
+      const packDiv = document.getElementById(`${packName}-pack`);
+      packDiv.classList.add("pulse");
+      setTimeout(() => {
+        packDiv.classList.remove("pulse");
+        openPack(packName);
+        isOpening = false;
+      }, 500);
+    }
+
+    function openPack(packName) {
+      const pack = packs[packName];
+      const totalChance = pack.reduce((sum, item) => sum + item.chance, 0);
+      const rand = Math.random() * totalChance;
+      let cumulative = 0;
+      let selected;
+
+      for (let item of pack) {
+        cumulative += item.chance;
+        if (rand < cumulative) {
+          selected = item;
+          break;
+        }
+      }
+
+      locker[selected.name]++;
+      updateLocker();
+
+      const itemDisplay = document.getElementById("item");
+      const rarityDisplay = document.getElementById("rarity");
+      itemDisplay.textContent = selected.name;
+      rarityDisplay.textContent = selected.rarity;
+      rarityDisplay.style.color = getColor(selected.rarity);
+
+      // Confetti launch
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: [getColor(selected.rarity)]
+      });
+    }
+  </script>
 </body>
 </html>
